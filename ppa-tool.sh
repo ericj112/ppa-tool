@@ -112,8 +112,8 @@ removeppa()
 	ppapurgeinstalled
 	makelist
 	ppa-purge -p "${ppaname}" -o "${ppaowner}" -s "${ppahost}"
-	echo -n "Disabling ppa"
-	sed -i 's/^[[:space:]]*deb/#deb/' "${ppalistfiles[$(($ppanum - 1))]}" && echo " success"
+	echo -n "Disabling"
+	sed -i 's/^[[:space:]]*deb/#deb/' "${ppalistfiles[$(($ppanum - 1))]}" && echo " ppa successful"
 	exit
 }
 
