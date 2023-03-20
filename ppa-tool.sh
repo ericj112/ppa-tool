@@ -120,7 +120,7 @@ removeppa()
 makelist()
 {
 	ppahttp=$(echo ${ppalist[$((ppanum - 1))]} | grep -o "http.*")
-	ppanohttp=${ppahttp/http:\/\//}
+	ppanohttp=${ppahttp/http[s]*:\/\//}
 	ppawunderscore=${ppanohttp//\//_}
 	ppahost1=$(echo ${ppawunderscore} | cut -d" " -f1)
 	ppahost2=${ppahost1%_}
