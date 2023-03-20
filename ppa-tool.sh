@@ -120,7 +120,7 @@ removeppa()
 makelist()
 {
 	ppahttp=$(echo ${ppalist[$((ppanum - 1))]} | grep -o "http.*")
-	ppanohttp=${ppahttp/http[s]*:\/\//}
+	ppanohttp=$(echo ${ppahttp} | sed -e 's/http[s]*:\/\///')
 	ppawunderscore=${ppanohttp//\//_}
 	ppahost1=$(echo ${ppawunderscore} | cut -d" " -f1)
 	ppahost2=${ppahost1%_}
@@ -131,7 +131,7 @@ makelist()
 	unset i	
 	for  i in $ppalistfile; do
 		if [ ! -f "$i" ]; then
-			echo -e "\e[31mError:\e[39m ppa list file doesn't exist, try \e[32mapt-get update\e[39m first"
+			echo -e "\e[31mError:\e[39m ppa list file $i doesn't exist, try \e[32mapt-get update\e[39m first"
 			exit
 		fi
 	done
